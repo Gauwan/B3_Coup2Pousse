@@ -41,7 +41,7 @@ $app->post('/account/signup/process/', function ($request, $response, $args) {
 
     return $response->withRedirect('/account/signup/');
 
-})->add($register);
+});
 
 
 // Connexion
@@ -67,7 +67,7 @@ $app->post('/account/signin/process/', function ($request, $response, $args) {
     else
         return $response->withRedirect('/signin/');
 
-})->add($connect);
+});
 
 
 // Déconnexion
