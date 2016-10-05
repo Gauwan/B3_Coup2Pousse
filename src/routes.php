@@ -25,56 +25,58 @@ $app->get('/404/', function ($request, $response, $args) {
 // Inscription
 $app->get('/signup/', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, 'account/signup.phtml', $args);
+    return $this->renderer->render($response, '/signup.phtml', $args);
 
 })->add($blockUSER)->add($pattern);
-
 
 $app->get('/signup/{error}', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, '/account/signup.phtml', $args);
+    return $this->renderer->render($response, '/signup.phtml', $args);
 
 })->add($blockUSER)->add($pattern);
 
 
-$app->post('/account/signup/process/', function ($request, $response, $args) {
+$app->post('/signup/process/', function ($request, $response, $args) {
 
-    return $response->withRedirect('/account/signup/');
-
+    $db = new dbUsers();
+    if ( $db->registrationUser($_POST["login"],$_POST["email"],$_POST["mdp"], $_POST["firstname"], $_POST["lastname"],$_POST["birthday"]))
+        return $response->withRedirect('/');
+    else
+        return $response->withRedirect('/signout/error');
 });
 
 
 // Connexion
-$app->get('/account/signin/', function ($request, $response, $args) {
+$app->get('/signin/', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, '/account/signin.phtml', $args);
+    return $this->renderer->render($response, '/signin.phtml', $args);
+
+})->add($blockUSER)->add($pattern);
+
+$app->get('/signin/{error}', function ($request, $response, $args) {
+
+    return $this->renderer->render($response, '/signin.phtml', $args);
 
 })->add($blockUSER)->add($pattern);
 
 
-$app->get('/account/signin/{error}', function ($request, $response, $args) {
-
-    return $this->renderer->render($response, '/account/signin.phtml', $args);
-
-})->add($blockUSER)->add($pattern);
-
-
-$app->post('/account/signin/process/', function ($request, $response, $args) {
+$app->post('/signin/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->connectionUser($_POST["email"],$_POST["mdp"]))
+    if ( $db->connectionUser($_POST["email"],$_POST["password"]))
         return $response->withRedirect('/');
     else
-        return $response->withRedirect('/signin/');
-
+        return $response->withRedirect('/signin/error');
 });
 
 
 // Déconnexion
-$app->get('/account/signout/', function ($request, $response, $args) {
+$app->get('/signout/', function ($request, $response, $args) {
 
     session_destroy();
 
-    return $response->withRedirect('/');
+    return $response->withRedirect('/signin/');
 
 })->add($permUSER);
+
+//

@@ -1,0 +1,36 @@
+<div class="container">
+
+
+    <?php if (isset($error)) {
+
+        echo '<div class="alert alert-danger" role="alert"> Il y a une erreur, réessayer ou contacter un administrateur !</div>';
+
+    } ?>
+
+
+
+    <form method="post" action="/signin/process/" class="form-signin fewinput">
+
+        <h2 class="form-signin-heading">Se connecter</h2>
+
+        <input type="email" id="email" name="email" class="form-control" placeholder="Adresse mail" required autofocus>
+
+        <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" required>
+
+        <input type="hidden" name="url" value="<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>">
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Se souvenir de moi
+            </label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+
+    </form>
+
+
+    <p class="text-center"><a href="/signup/" class="btn btn-success already">Vous n'avez pas de compte?</a></p>
+
+
+</div> <!-- .container -->
