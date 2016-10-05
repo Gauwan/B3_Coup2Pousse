@@ -1,26 +1,21 @@
-# Slim Framework 3 Skeleton Application
+# Slim Framework 3 Skeleton Application pour Dreamzite
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+Pour les commandes, je te conseille "Cygwin".
+Le terminal est adaptable et permet les même commandes que linux.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+## Mise à jour du Framework :
+Mettre à jour le framework avec la commande :
 
-## Install the Application
+	composer update
 
-Run this command from the directory in which you want to install your new Slim Framework application.
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+## Serveur PHP pour les modifications :
+Ouvrir le serveur PHP pour le site (comme Symfony2) avec la commande :
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+	php -S 0.0.0.0:8080 -t public public/index.php
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
 
-To run the application in development, you can also run this command. 
+Ensuite le site est : http://localhost:8080
 
-	php composer.phar start
 
-Run this command to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+Maintenant que tu connais l'essentiel ! C'est parti pour le codage !
