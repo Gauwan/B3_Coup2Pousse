@@ -38,7 +38,7 @@ class dbUsers extends database {
         $pdo = $this->connect();
 
         //Traitement
-        $requete = "SELECT ID_User, Password_User, Admin_User FROM Users WHERE Email_User = '".$email."'";
+        $requete = "SELECT ID_User, Password_User FROM Users WHERE Email_User = '".$email."'";
         $stmt = $pdo->prepare($requete);
 
         if ($stmt->execute())
@@ -46,16 +46,9 @@ class dbUsers extends database {
             $result = $stmt->fetch();
             if ($result["Password_User"] == $password)
             {
-
-                //On update sa date de dernière connexion
-                $date = date("Y-m-d");
-                $stmtLL = $pdo->prepare("UPDATE Users SET Lastlogin_User = :date WHERE ID_User = :user ;");
-                $stmtLL->bindParam(':date', $date);
-                $stmtLL->bindParam(':user', $result["ID_User"]);
-                $stmtLL ->execute();
+                $_SESSION["C2P_ID"] = $result["ID_User"];
 
                 return true;
-
             }
             else
                 return false;

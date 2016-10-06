@@ -39,7 +39,7 @@ $app->get('/signup/{error}', function ($request, $response, $args) {
 $app->post('/signup/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->registrationUser($_POST["login"],$_POST["email"],$_POST["mdp"], $_POST["firstname"], $_POST["lastname"],$_POST["birthday"]))
+    if ( $db->registrationUser($_POST["login"],$_POST["email"],$_POST["password"], $_POST["firstname"], $_POST["lastname"],$_POST["birthday"]))
         return $response->withRedirect('/');
     else
         return $response->withRedirect('/signout/error');
