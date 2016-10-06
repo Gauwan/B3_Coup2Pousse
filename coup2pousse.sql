@@ -1,9 +1,10 @@
+
 -- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 06 Octobre 2016 à 09:21
+-- Généré le: Jeu 06 Octobre 2016 à 10:04
 -- Version du serveur: 10.0.20-MariaDB
 -- Version de PHP: 5.2.17
 
@@ -28,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `Adresses` (
   `ID_Adresse` int(11) NOT NULL,
-  `Numero_Adresse` int(11) NOT NULL,
-  `Intitule_Adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Ville_Adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Number_Adresse` int(11) NOT NULL,
+  `Name_Adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `City_Adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `CodePostal_Adresse` int(5) NOT NULL,
   PRIMARY KEY (`ID_Adresse`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -43,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `Adresses` (
 
 CREATE TABLE IF NOT EXISTS `Aides` (
   `ID_Aide` int(11) NOT NULL,
-  `Categorie_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Niveau_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Commentaire_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Reserve_Aide` tinyint(1) NOT NULL,
+  `Category_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Level_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Commentary_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Reserved_Aide` tinyint(1) NOT NULL,
   `Note_Aide` int(1) NOT NULL,
   `ID_User` int(11) NOT NULL,
   `ID_Etablissement` int(11) NOT NULL,
@@ -64,8 +65,8 @@ CREATE TABLE IF NOT EXISTS `Etablissements` (
   `ID_Etablissement` int(11) NOT NULL,
   `Login_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Password_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Nom_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Telephone_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Name_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Phonenumber_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Email_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ID_Adresse` int(11) NOT NULL,
   PRIMARY KEY (`ID_Etablissement`),
@@ -87,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `Phonenumber_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Skype_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Email_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Disponibilite_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Disponibility_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ID_Adresse` int(11) NOT NULL,
   PRIMARY KEY (`ID_User`),
   UNIQUE KEY `ID_Adresse` (`ID_Adresse`)
