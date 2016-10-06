@@ -46,7 +46,8 @@ button:hover{
     text-decoration: none;
 }
 footer{
-    position: absolute; bottom: 0; left: 0; right: 0
+    position: relative; 
+    bottom: -35px;
 }
 .btn-default{
     background-color: #FE5000!important;
