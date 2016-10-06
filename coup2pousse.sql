@@ -4,7 +4,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 06 Octobre 2016 à 10:04
+-- Généré le: Jeu 06 Octobre 2016 à 11:21
 -- Version du serveur: 10.0.20-MariaDB
 -- Version de PHP: 5.2.17
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `Adresses` (
   `ID_Adresse` int(11) NOT NULL,
-  `Number_Adresse` int(11) NOT NULL,
-  `Name_Adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `City_Adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `CodePostal_Adresse` int(5) NOT NULL,
+  `Number_Adresse` int(11) DEFAULT NULL,
+  `Name_Adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `City_Adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `CodePostal_Adresse` int(5) DEFAULT NULL,
   PRIMARY KEY (`ID_Adresse`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -46,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `Aides` (
   `ID_Aide` int(11) NOT NULL,
   `Category_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Level_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Commentary_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Commentary_Aide` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Reserved_Aide` tinyint(1) NOT NULL,
-  `Note_Aide` int(1) NOT NULL,
+  `Note_Aide` int(1) DEFAULT NULL,
   `ID_User` int(11) NOT NULL,
   `ID_Etablissement` int(11) NOT NULL,
   PRIMARY KEY (`ID_Aide`),
@@ -66,9 +66,9 @@ CREATE TABLE IF NOT EXISTS `Etablissements` (
   `Login_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Password_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Name_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Phonenumber_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Email_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ID_Adresse` int(11) NOT NULL,
+  `Phonenumber_Etablissement` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Email_Etablissement` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ID_Adresse` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_Etablissement`),
   UNIQUE KEY `ID_Adresse` (`ID_Adresse`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -85,11 +85,11 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `Password_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Firstname_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Lastname_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Phonenumber_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Skype_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Email_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Disponibility_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ID_Adresse` int(11) NOT NULL,
+  `Phonenumber_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Skype_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Email_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Disponibility_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ID_Adresse` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_User`),
   UNIQUE KEY `ID_Adresse` (`ID_Adresse`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
