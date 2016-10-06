@@ -89,3 +89,28 @@ $app->get('/signout/', function ($request, $response, $args) {
 })->add($permUSER);
 
 //
+
+
+// Profile
+$app->get('/profile/', function ($request, $response, $args) {
+
+    return $this->renderer->render($response, '/profile.phtml', $args);
+
+})->add($blockUSER)->add($pattern);
+
+$app->get('/profile/{error}', function ($request, $response, $args) {
+
+    return $this->renderer->render($response, '/profile.phtml', $args);
+
+})->add($blockUSER)->add($pattern);
+
+
+$app->post('/profile/process/', function ($request, $response, $args) {
+
+    $db = new dbUsers();
+    if ( $db->connectionUser($request->getParsedBody()['email'], $request->getParsedBody()['password']))
+        return $response->withRedirect('/search/');
+    else
+        return $response->withRedirect('/signin/error');
+});
+

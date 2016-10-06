@@ -1,0 +1,54 @@
+<div class="container">
+
+
+    <?php if (isset($error)) {
+
+            echo '<div class="alert alert-danger" role="alert"> Il y a une erreur, réessayer ou contacter un administrateur !</div>';
+
+    } ?>
+
+
+
+    <form method="post" action="/profile/process/" class="form-profile">
+
+        <h2 class="form-profile-heading">Profile</h2>
+
+
+        <label>Prénom :</label>
+        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required autofocus>
+
+        <label>Nom :</label>
+        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required>
+
+        <label>Adresse :</label>
+        <input type="text" id="address" name="address" class="form-control" placeholder="Adresse">
+
+        <label>Ville :</label>
+        <input type="text" id="city" name="city" class="form-control" placeholder="Ville">
+
+        <label>Téléphone :</label>
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="Téléphone">
+
+        <label>Skype :</label>
+        <input type="text" id="skype" name="skype" class="form-control" placeholder="Skype">
+
+        <label>Note :</label>
+        <input type="integer" id="note" name="note" class="form-control" placeholder="Note">
+
+        <label>Disponibilités :</label>
+        <input type="text" id="freetime" name="freetime" class="form-control" placeholder="Disponibilités">
+
+        </br>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Enregistrer</button>
+
+    </form>
+
+
+
+<!--
+    <p class="text-center"><a href="/signin/" class="btn btn-success already">Vous avez déja un compte?</a></p>
+-->
+
+
+</div> <!-- .container -->
