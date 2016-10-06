@@ -111,7 +111,7 @@ $app->post('/profile/process/', function ($request, $response, $args) {
 });
 
 // Aide
-$app->post('/aide/add/', function ($request, $response, $args) {
+$app->post('/aide/add/process/', function ($request, $response, $args) {
 	
 	$db = new dbUsers();
 	if ( $db->addAide($request->getParsedBody()['category'], $request->getParsedBody()['level'], $request->getParsedBody()['commentary']) )
