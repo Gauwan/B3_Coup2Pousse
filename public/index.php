@@ -29,6 +29,7 @@ require __DIR__ . '/../src/routes.php';
 // Database
 require __DIR__ . '/../src/database.php';
 require __DIR__ . '/../src/dbUsers.php';
+require __DIR__ . '/../src/dbAides.php';
 
 // Run app
 $app->run();

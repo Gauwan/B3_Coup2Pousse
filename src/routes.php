@@ -112,15 +112,23 @@ $app->post('/profile/process/', function ($request, $response, $args) {
 
 // Aide
 $app->post('/aide/add/process/', function ($request, $response, $args) {
-	
-	$db = new dbUsers();
-	if ( $db->addAide($request->getParsedBody()['category'], $request->getParsedBody()['level'], $request->getParsedBody()['commentary']) )
-		return $reponse->withRedirect('/search/');
-	
+
+  $db = new dbAides();
+  if ( $db->addAide($request->getParsedBody()['category'], $request->getParsedBody()['level'], $request->getParsedBody()['commentary']) )
+    return $reponse->withRedirect('/search/');
+  else
+    return $response->withRedirect('/aide/add/error');
+
 });
 
+$app->get('/aide/add/{error}', function ($request, $response, $args) {
+
+  return $this->renderer->render($response, '/addAide.phtml', $args);
+
+})->add($connectUSER)->add($pattern);
+
 $app->get('/aide/add/', function ($request, $response, $args) {
-	
-	return $this->renderer->render($response, '/addAide.phtml', $args);
-	
+
+  return $this->renderer->render($response, '/addAide.phtml', $args);
+
 })->add($connectUSER)->add($pattern);
