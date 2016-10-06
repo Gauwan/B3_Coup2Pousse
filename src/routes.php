@@ -20,7 +20,7 @@ $app->get('/404/', function ($request, $response, $args) {
 
     // Render index view
     return $this->renderer->render($response, '404.phtml', $args);
-})->add($pattern);
+})->add($connectUSER)->add($pattern);
 
 $app->get('/search/', function ($request, $response, $args) {
     // Sample log message
@@ -40,20 +40,20 @@ $app->get('/signup/', function ($request, $response, $args) {
 
     return $this->renderer->render($response, '/signup.phtml', $args);
 
-})->add($blockUSER)->add($pattern);
+})->add($disconnectUSER)->add($pattern);
 
 $app->get('/signup/{error}', function ($request, $response, $args) {
 
     return $this->renderer->render($response, '/signup.phtml', $args);
 
-})->add($blockUSER)->add($pattern);
+})->add($disconnectUSER)->add($pattern);
 
 
 $app->post('/signup/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->registrationUser($request->getParsedBody()['email'],$request->getParsedBody()['login'],$request->getParsedBody()['password'], $request->getParsedBody()['firstname'], $request->getParsedBody()['lastname'], $request->getParsedBody()['birthday']))
-        return $response->withRedirect('/');
+    if ( $db->registrationUser($request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['email'], $request->getParsedBody()['firstname'], $request->getParsedBody()['lastname']))
+        return $response->withRedirect('/signin/');
     else
         return $response->withRedirect('/signup/error');
 });
@@ -64,19 +64,19 @@ $app->get('/signin/', function ($request, $response, $args) {
 
     return $this->renderer->render($response, '/signin.phtml', $args);
 
-})->add($blockUSER)->add($pattern);
+})->add($disconnectUSER)->add($pattern);
 
 $app->get('/signin/{error}', function ($request, $response, $args) {
 
     return $this->renderer->render($response, '/signin.phtml', $args);
 
-})->add($blockUSER)->add($pattern);
+})->add($disconnectUSER)->add($pattern);
 
 
 $app->post('/signin/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->connectionUser($request->getParsedBody()['email'], $request->getParsedBody()['password'], $request->getParsedBody()['cookie']))
+    if ( $db->connectionUser($request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['cookie']))
         return $response->withRedirect('/search/');
     else
         return $response->withRedirect('/signin/error');
@@ -90,7 +90,7 @@ $app->get('/signout/', function ($request, $response, $args) {
 
     return $response->withRedirect('/signin/');
 
-})->add($permUSER);
+})->add($connectUSER);
 
 //
 
@@ -100,13 +100,13 @@ $app->get('/profile/', function ($request, $response, $args) {
 
     return $this->renderer->render($response, '/profile.phtml', $args);
 
-})->add($blockUSER)->add($pattern);
+})->add($connectUSER)->add($pattern);
 
 $app->get('/profile/{error}', function ($request, $response, $args) {
 
     return $this->renderer->render($response, '/profile.phtml', $args);
 
-})->add($blockUSER)->add($pattern);
+})->add($connectUSER)->add($pattern);
 
 
 $app->post('/profile/process/', function ($request, $response, $args) {

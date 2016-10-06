@@ -11,20 +11,18 @@ class dbUsers extends database {
     /*-----  Zone Public  -----*/
     /*-------------------------*/
 
-    public function registrationUser($email, $login, $password, $firstname, $lastname, $birthday)
+    public function registrationUser($login, $password, $email, $firstname, $lastname)
     {
         $pdo = $this->connect();
 
         //Préparation de la requete
-        $requete = "INSERT INTO Users (Email_User, Login_User, Password_User, Firstname_User, Lastname_User, Birthday_User, Signup_User) VALUES (:email, :login, :password, :firstname, :lastname, :birthday, :signup)";
+        $requete = "INSERT INTO users (Login_User, Password_User, Email_User, Firstname_User, Lastname_User) VALUES (:login, :password, :email, :firstname, :lastname)";
         $stmt = $pdo->prepare($requete);
-        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':firstname', $firstname);
         $stmt->bindParam(':lastname', $lastname);
-        $stmt->bindParam(':birthday', $birthday);
-        $stmt->bindParam(':signup', date("Y-m-d"));
 
         if ($stmt->execute())
             return true;
@@ -38,7 +36,7 @@ class dbUsers extends database {
         $pdo = $this->connect();
 
         //Traitement
-        $requete = "SELECT ID_User, Password_User FROM Users WHERE Email_User = '".$email."'";
+        $requete = "SELECT ID_User, Password_User FROM Users WHERE Login_User = '".$email."'";
         $stmt = $pdo->prepare($requete);
 
         if ($stmt->execute())
