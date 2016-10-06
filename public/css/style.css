@@ -1,7 +1,11 @@
+html{
+    height: 100%;
+}
 body {
     margin: 50px 0 0 0;
     padding: 0;
     width: 100%;
+    height: 95%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     color: #aaa;
@@ -13,6 +17,11 @@ body {
     font-size: 25px;
     float: middle;
     width: 28em;
+}
+#contentpage{
+    overflow-y: scroll!important;
+    height: 100%;
+    z-index: 9999;
 }
 #boutonrechercher{
     margin: auto;
@@ -26,10 +35,6 @@ body {
     -moz-border-radius-bottomright: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    z-index: 999999999;
-}
-.content{
-    overflow-y: visible;
 }
 #monprofil{
     height: 150px;
