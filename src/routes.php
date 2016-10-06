@@ -4,6 +4,10 @@
 $app->get('/', function ($request, $response, $args) {
     // Sample log message
     // Render index view
+    if (isset($_COOKIE["C2P_COOKIE"]))
+        $_SESSION["C2P_ID"] = $_COOKIE["C2P_COOKIE"];
+
+
     if (isset($_SESSION["C2P_ID"]))
         return $response->withRedirect('/search/');
     else
@@ -72,7 +76,7 @@ $app->get('/signin/{error}', function ($request, $response, $args) {
 $app->post('/signin/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->connectionUser($request->getParsedBody()['email'], $request->getParsedBody()['password']))
+    if ( $db->connectionUser($request->getParsedBody()['email'], $request->getParsedBody()['password'], $request->getParsedBody()['cookie']))
         return $response->withRedirect('/search/');
     else
         return $response->withRedirect('/signin/error');

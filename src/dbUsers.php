@@ -33,7 +33,7 @@ class dbUsers extends database {
 
     }
 
-    public function connectionUser($email, $password)
+    public function connectionUser($email, $password, $cookie)
     {
         $pdo = $this->connect();
 
@@ -47,6 +47,9 @@ class dbUsers extends database {
             if ($result["Password_User"] == $password)
             {
                 $_SESSION["C2P_ID"] = $result["ID_User"];
+
+                if ($cookie)
+                    setcookie("C2P_COOKIE", $result["ID_User"], time() + (86400 * 30));
 
                 return true;
             }
