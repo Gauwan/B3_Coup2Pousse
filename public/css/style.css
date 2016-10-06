@@ -20,7 +20,6 @@ body {
 #contentpage{
     overflow-y: scroll!important;
     height: 100%;
-    z-index: 9999;
 }
 #boutonrechercher{
     margin-left: 100%;
@@ -39,17 +38,14 @@ body {
 @media screen and (max-width: 240px) {
     .divrecherche{
     width: 80%;
-    margin-top: 50px;
+    margin-top: 50px;}
 }
-    }
 .divrecherche{
     width: 50%;
 }
 @media screen and (max-width: 800px) {
 .formsign{
-width: 60%!important;
-}
-}
+width: 60%!important;}}
 .formsign{
     margin: auto;
     width: 30%;
