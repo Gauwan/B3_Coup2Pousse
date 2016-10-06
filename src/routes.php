@@ -3,16 +3,11 @@
 
 $app->get('/', function ($request, $response, $args) {
     // Sample log message
-    // Render index view
-    if (isset($_COOKIE["C2P_COOKIE"]))
-        $_SESSION["C2P_ID"] = $_COOKIE["C2P_COOKIE"];
+    $this->logger->info("Slim-Skeleton '/' route");
 
-
-    if (isset($_SESSION["C2P_ID"]))
-        return $response->withRedirect('/search/');
-    else
-        return $response->withRedirect('/signin/');
-})->add($pattern);
+    // Render search view
+    return $this->renderer->render($response, '/search.phtml', $args);
+})->add($connectUSER)->add($pattern);
 
 $app->get('/404/', function ($request, $response, $args) {
     // Sample log message
@@ -21,14 +16,6 @@ $app->get('/404/', function ($request, $response, $args) {
     // Render index view
     return $this->renderer->render($response, '404.phtml', $args);
 })->add($connectUSER)->add($pattern);
-
-$app->get('/search/', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
-    // Render search view
-    return $this->renderer->render($response, '/search.phtml', $args);
-})->add($pattern);
 
 
 /////////////////////////
@@ -52,7 +39,7 @@ $app->get('/signup/{error}', function ($request, $response, $args) {
 $app->post('/signup/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->registrationUser($request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['fullname'], $request->getParsedBody()['email']))
+    if ( $db->registrationUser($request->getParsedBody()['establishment'], $request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['fullname'], $request->getParsedBody()['email']))
         return $response->withRedirect('/signin/');
     else
         return $response->withRedirect('/signup/error');
@@ -77,7 +64,7 @@ $app->post('/signin/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
     if ( $db->connectionUser($request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['cookie']))
-        return $response->withRedirect('/search/');
+        return $response->withRedirect('/');
     else
         return $response->withRedirect('/signin/error');
 });

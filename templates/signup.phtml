@@ -9,9 +9,16 @@
 
 
 
-    <form method="post" class="formsign" action="/signup/process/" class="form-signin">
+    <form method="post" action="/signup/process/" class="form-signin">
 
         <h2 class="form-signin-heading">S'inscrire</h2>
+        <br>
+
+        <label for="establishment">Situation* :</label>
+        <select id="establishment" name="establishment" class="form-control">
+            <option value="0">Particulier</option>
+            <option value="1">Etablissement</option>
+        </select>
         <br>
 
         <label for="login">Identifiant* :</label>

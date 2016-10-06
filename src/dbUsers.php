@@ -11,12 +11,12 @@ class dbUsers extends database {
     /*-----  Zone Public  -----*/
     /*-------------------------*/
 
-    public function registrationUser($login, $password, $fullname, $email)
+    public function registrationUser($establishment, $login, $password, $fullname, $email)
     {
         $pdo = $this->connect();
 
         //Préparation de la requete
-        $requete = "INSERT INTO users (Login_User, Password_User, Fullname_User, Email_User) VALUES (:login, :password, :fullname, :email)";
+        $requete = "INSERT INTO users (Login_User, Password_User, Fullname_User, Email_User, IsEtablissement_User) VALUES (:login, :password, :fullname, :email, :establishment)";
 
         $stmt = $pdo->prepare($requete);
         $stmt->bindParam(':login', $login);
@@ -24,6 +24,7 @@ class dbUsers extends database {
         $stmt->bindParam(':fullname', $fullname);
         if (isset($email))
             $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':establishment', $establishment);
 
         if ($stmt->execute())
             return true;
