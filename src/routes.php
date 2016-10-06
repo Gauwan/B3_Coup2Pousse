@@ -81,6 +81,11 @@ $app->get('/signout/', function ($request, $response, $args) {
 
 //
 
+$app->get('/add/', function ($request, $response, $args) {
+
+    return $this->renderer->render($response, '/addAide.phtml', $args);
+
+})->add($connectUSER)->add($pattern);
 
 // Profile
 $app->get('/profile/', function ($request, $response, $args) {
