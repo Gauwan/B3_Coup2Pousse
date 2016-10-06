@@ -118,3 +118,9 @@ $app->post('/aide/add/process/', function ($request, $response, $args) {
 		return $reponse->withRedirect('/search/');
 	
 });
+
+$app->get('/aide/add/', function ($request, $response, $args) {
+	
+	return $this->renderer->render($response, '/addAide.phtml', $args);
+	
+})->add($connectUSER)->add($pattern);
