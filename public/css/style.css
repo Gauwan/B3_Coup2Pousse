@@ -35,4 +35,13 @@ body {
 }
 .form-group{
     display: inline-block;
+}.sign{
+
+}
+.formsign{
+    margin: auto;
+    width: 350px;
+}
+button:hover{
+    text-decoration: none;
 }
