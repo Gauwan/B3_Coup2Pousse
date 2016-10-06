@@ -7,16 +7,32 @@ body {
     color: #aaa;
     font-size: 18px;
 }
-
-h1 {
-    color: #719e40;
-    letter-spacing: -3px;
-    font-family: 'Lato', sans-serif;
-    font-size: 100px;
-    font-weight: 200;
-    margin-bottom: 0;
-}
 #barrederecherche{
     text-align: center;
     font-size: 25px;
+    float: middle;
+    width: 28em;
+}
+#boutonrechercher{
+    margin: auto;
+    float: right;
+    top: -34.5px;
+    width: 35px;
+    height: 34.5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 999999999;
+}
+#monprofil{
+    height: 150px;
+    width: 150px;
+    border: 1px solid #000000;
+    position: absolute;
+}
+.form-group{
+    display: inline-block;
 }

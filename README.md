@@ -12,10 +12,10 @@ Mettre à jour le framework avec la commande :
 ## Serveur PHP pour les modifications :
 Ouvrir le serveur PHP pour le site (comme Symfony2) avec la commande :
 
-	php -S 0.0.0.0:8080 -t public public/index.php
+	php -S localhost:8000 -t public public/index.php
 
 
-Ensuite le site est : http://localhost:8080
+Ensuite le site est : http://localhost:8000
 
 
 Maintenant que tu connais l'essentiel ! C'est parti pour le codage !
