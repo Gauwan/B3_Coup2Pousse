@@ -13,9 +13,9 @@ class database {
 
     public function __construct()
     {
-        $this->_user = "root";  // u842697544_admin
-        $this->_password = "";        // Epsi33
-        $this->_pdodsn = "mysql:host=127.0.0.1;dbname=u842697544_db";
+        $this->_user = "root"; //workshop
+        $this->_password = ""; //azerty
+        $this->_pdodsn = "mysql:host=127.0.0.1;dbname=coup2pousse";
     }
 
     public function connect() {

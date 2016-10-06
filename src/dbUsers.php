@@ -37,33 +37,26 @@ class dbUsers extends database {
     {
         $pdo = $this->connect();
 
-        //Traitement
-
-
-
-        $found = false;
-
         //Recheche des utilisateurs
-        $requeteP = "SELECT ID_User, Password_User FROM Users WHERE Login_User = '".$login."'";
-        $stmt = $pdo->prepare($requeteP);
+        $requete = "SELECT ID_User, Password_User FROM Users WHERE Login_User = '".$login."'";
+        $stmt = $pdo->prepare($requete);
         if ($stmt->execute())
         {
             $result = $stmt->fetch();
             if ($result["Password_User"] == $password)
             {
-                $found = true;
                 $_SESSION["C2P_ID"] = $result["ID_User"];
                 if ($cookie)
                     setcookie("C2P_COOKIE", $result["ID_User"], time() + (86400 * 30));
+
+                return true;
             }
+            else
+                return false;
         }
-
-        $this->disconnect($pdo);
-
-        if ($found)
-            return true;
         else
             return false;
+
     }
 
     public function getUserName($id)

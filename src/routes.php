@@ -6,8 +6,8 @@ $app->get('/', function ($request, $response, $args) {
     $this->logger->info("Slim-Skeleton '/' route");
 
     // Render search view
-    return $this->renderer->render($response, '/search.phtml', $args);
-})->add($pattern);
+    return $this->renderer->render($response, 'search.phtml', $args);
+})->add($connectUSER)->add($pattern);
 
 $app->get('/404/', function ($request, $response, $args) {
     // Sample log message
@@ -25,13 +25,13 @@ $app->get('/404/', function ($request, $response, $args) {
 // Inscription
 $app->get('/signup/', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, '/signup.phtml', $args);
+    return $this->renderer->render($response, 'signup.phtml', $args);
 
 })->add($disconnectUSER)->add($pattern);
 
 $app->get('/signup/{error}', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, '/signup.phtml', $args);
+    return $this->renderer->render($response, 'signup.phtml', $args);
 
 })->add($disconnectUSER)->add($pattern);
 
@@ -49,13 +49,13 @@ $app->post('/signup/process/', function ($request, $response, $args) {
 // Connexion
 $app->get('/signin/', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, '/signin.phtml', $args);
+    return $this->renderer->render($response, 'signin.phtml', $args);
 
 })->add($disconnectUSER)->add($pattern);
 
 $app->get('/signin/{error}', function ($request, $response, $args) {
 
-    return $this->renderer->render($response, '/signin.phtml', $args);
+    return $this->renderer->render($response, 'signin.phtml', $args);
 
 })->add($disconnectUSER)->add($pattern);
 
