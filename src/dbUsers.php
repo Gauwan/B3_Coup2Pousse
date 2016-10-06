@@ -80,6 +80,30 @@ class dbUsers extends database {
         return $result["Login_User"];
 
     }
+
+    //Generic function to get data from field.
+    public function getUserField($id, $field)
+    {
+        $pdo = $this->connect();
+
+        //Traitement
+        $requete = "SELECT ".$field." FROM Users WHERE ID_User = '".$id."'";
+        $stmt = $pdo->query($requete);
+        $result = $stmt->fetch();
+        return $result[$field];
+
+    }
+
+    public function getAddress($id)
+    {
+        $pdo = $this->connect();
+
+        $stmt = $pdo->query("SELECT Number_Adresse, Name_Adresse, City_Adresse, CodePostal_Adresse FROM Adresses INNER JOIN Users WHERE Users.ID_Adresse = Adresses.ID_Adresse");
+        $result = $stmt->fetch();
+        return $result;
+
+    }
+
 	
 	public function getAides() {
 		
