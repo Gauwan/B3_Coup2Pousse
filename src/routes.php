@@ -4,7 +4,10 @@
 $app->get('/', function ($request, $response, $args) {
     // Sample log message
     // Render index view
-    return $response->withRedirect('/signin/');
+    if (isset($_SESSION["C2P_ID"]))
+        return $response->withRedirect('/search/');
+    else
+        return $response->withRedirect('/signin/');
 })->add($pattern);
 
 $app->get('/404/', function ($request, $response, $args) {
@@ -70,7 +73,7 @@ $app->post('/signin/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
     if ( $db->connectionUser($request->getParsedBody()['email'], $request->getParsedBody()['password']))
-        return $response->withRedirect('/');
+        return $response->withRedirect('/search/');
     else
         return $response->withRedirect('/signin/error');
 });
