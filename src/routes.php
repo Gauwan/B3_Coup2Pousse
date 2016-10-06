@@ -7,7 +7,7 @@ $app->get('/', function ($request, $response, $args) {
 
     // Render search view
     return $this->renderer->render($response, '/search.phtml', $args);
-})->add($connectUSER)->add($pattern);
+})->add($pattern);
 
 $app->get('/404/', function ($request, $response, $args) {
     // Sample log message
