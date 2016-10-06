@@ -24,9 +24,7 @@ body {
 }
 #boutonrechercher{
     margin-left: 100%;
-
     top: -34.5px;
-
     height: 34.5px;
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
@@ -47,9 +45,14 @@ body {
 .divrecherche{
     width: 50%;
 }
+@media screen and (max-width: 800px) {
+.formsign{
+width: 60%!important;
+}
+}
 .formsign{
     margin: auto;
-    width: 350px;
+    width: 30%;
 }
 button:hover{
     text-decoration: none;
