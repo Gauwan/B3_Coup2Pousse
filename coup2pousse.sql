@@ -45,9 +45,9 @@ CREATE TABLE `Aides` (
   `Category_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Level_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Commentary_Aide` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Reserved_Aide` tinyint(1) NOT NULL,
+  `Reserved_Aide` tinyint(1) DEFAULT 0,
   `Note_Aide` int(1) DEFAULT NULL,
-  `ID_Pousse_User` int(11) NOT NULL,
+  `ID_Pousse_User` int(11) DEFAULT NULL,
   `ID_Pousseur_User` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
