@@ -17,20 +17,20 @@ $pattern = function ($request, $response, $next) {
 
 
 //Blocage des utilisateurs
-$permUSER = function ($request, $response, $next) {
+$connectUSER = function ($request, $response, $next) {
 
     $newResponse = $next($request, $response);
     if (empty($_SESSION["C2P_ID"]))
-        $newResponse = $response->withRedirect('/account/signin/');
+        $newResponse = $response->withRedirect('/signin/');
 
     return $newResponse;
 };
 
-$blockUSER = function ($request, $response, $next) {
+$disconnectUSER = function ($request, $response, $next) {
 
     $newResponse = $next($request, $response);
     if (isset($_SESSION["C2P_ID"]))
-        $newResponse = $response->withRedirect('/account/profile/');
+        $newResponse = $response->withRedirect('/search/');
 
     return $newResponse;
 };
