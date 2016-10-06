@@ -12,26 +12,30 @@
     <form method="post" class="formsign" action="/signup/process/" class="form-signin">
 
         <h2 class="form-signin-heading">S'inscrire</h2>
-        </br>
+        <br>
 
-        <label>Identifiant :</label>
+        <label for="login">Identifiant* :</label>
         <input type="text" id="login" name="login" class="form-control" placeholder="Identifiant" required autofocus>
-</br>
-        <label>Mot de passe :</label>
+        <br>
+
+        <label for="password">Mot de passe* :</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" required>
-</br>
-        <label>Email :</label>
-        <input type="email" id="email" name="email" class="form-control" placeholder="Adresse mail" required>
-</br>
-        <label>Prénom :</label>
-        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Prénom" required>
-</br>
-        <label>Nom :</label>
+        <br>
+
+        <label for="lastname">Nom* :</label>
         <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Nom" required>
+        <br>
 
-        </br>
+        <label for="firstname">Prénom* :</label>
+        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Prénom" required>
+        <br>
 
-        </br></br>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Adresse mail">
+
+        <br><h5><b>* Champs obligatoires</b></h5>
+
+        <br><br>
         <button class="btn btn-lg btn-default btn-block" type="submit" id="submit">Inscription</button>
 
     </form>
