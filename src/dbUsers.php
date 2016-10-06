@@ -11,18 +11,17 @@ class dbUsers extends database {
     /*-----  Zone Public  -----*/
     /*-------------------------*/
 
-    public function registrationUser($login, $password, $firstname, $lastname, $email)
+    public function registrationUser($login, $password, $fullname, $email)
     {
         $pdo = $this->connect();
 
         //Préparation de la requete
-        $requete = "INSERT INTO users (Login_User, Password_User, Firstname_User, Lastname_User, Email_User) VALUES (:login, :password, :firstname, :lastname, :email)";
+        $requete = "INSERT INTO users (Login_User, Password_User, Fullname_User, Email_User) VALUES (:login, :password, :fullname, :email)";
 
         $stmt = $pdo->prepare($requete);
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':firstname', $firstname);
-        $stmt->bindParam(':lastname', $lastname);
+        $stmt->bindParam(':fullname', $fullname);
         if (isset($email))
             $stmt->bindParam(':email', $email);
 
@@ -43,7 +42,7 @@ class dbUsers extends database {
 
         $found = false;
 
-        //Recheche des particuliers
+        //Recheche des utilisateurs
         $requeteP = "SELECT ID_User, Password_User FROM Users WHERE Login_User = '".$login."'";
         $stmt = $pdo->prepare($requeteP);
         if ($stmt->execute())
@@ -55,24 +54,6 @@ class dbUsers extends database {
                 $_SESSION["C2P_ID"] = $result["ID_User"];
                 if ($cookie)
                     setcookie("C2P_COOKIE", $result["ID_User"], time() + (86400 * 30));
-            }
-        }
-
-        //recherche des etablissements
-        if (!$found)
-        {
-            $requeteE = "SELECT ID_Etablissement, Password_Etablissement FROM etablissements WHERE Login_User = '".$login."'";
-            $stmt = $pdo->prepare($requeteE);
-            if ($stmt->execute())
-            {
-                $result = $stmt->fetch();
-                if ($result["Password_Etablissement"] == $password)
-                {
-                    $found = true;
-                    $_SESSION["C2P_ID"] = $result["ID_Etablissement"];
-                    if ($cookie)
-                        setcookie("C2P_COOKIE", $result["ID_Etablissement"], time() + (86400 * 30));
-                }
             }
         }
 

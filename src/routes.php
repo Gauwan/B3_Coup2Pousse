@@ -52,7 +52,7 @@ $app->get('/signup/{error}', function ($request, $response, $args) {
 $app->post('/signup/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->registrationUser($request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['firstname'], $request->getParsedBody()['lastname'], $request->getParsedBody()['email']))
+    if ( $db->registrationUser($request->getParsedBody()['login'], $request->getParsedBody()['password'], $request->getParsedBody()['fullname'], $request->getParsedBody()['email']))
         return $response->withRedirect('/signin/');
     else
         return $response->withRedirect('/signup/error');
