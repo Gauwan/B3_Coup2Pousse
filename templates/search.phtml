@@ -8,25 +8,14 @@
 
   Liste des pousseurs.
 
-<?php 
+  <hr>
 
-$db = new dbAides(); 
-$aides = $db->getAides();
-if ($aides)
-  foreach ($aides as $aide) {
-    echo '
-      <tr>
-        <td>'.$aide.'</td>
-      </tr>';
-  }
-else
-  echo '</br>(vide)';
-
-?>
-
-<?php if (isset($name)) : ?>
-  <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-<?php endif; ?>
+  <div class="row">
+  <?php
+  $db = new dbAides();
+  $aides = $db->getAides();
+  ?>
+  </div>
 
 </div>
 

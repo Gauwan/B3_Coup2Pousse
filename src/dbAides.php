@@ -3,11 +3,32 @@
 class dbAides extends database {
 
   public function getAides() {
+
     $pdo = $this->connect();
-    $requete = "SELECT ID_Aide, Category_Aide, Level_Aide, Commentary_Aide FROM Aides";
+
+    $requete = "SELECT Category_Aide, Level_Aide, Commentary_Aide FROM Aides";
     $stmt = $pdo->query($requete);
-    $result = $stmt->fetch();
-    return $result;
+
+      if($stmt->rowCount() == 0)
+      {
+          echo '<p>Aucune aide disponible</p>';
+      }
+      else
+      {
+        for ($i =0; $i < $stmt->rowCount(); $i++)
+        {
+            $aide = $stmt->fetch();
+            echo '<div class="col-sm-6">';
+            echo '<h2>' . utf8_encode($aide["Category_Aide"]) . ' <small>' . utf8_encode($aide["Level_Aide"]) . '</small></h2>';
+            echo '<p>' . utf8_encode($aide["Commentary_Aide"]) . '</p>';
+            echo '<button class="btn btn-success">Je pousse!</button>';
+            echo '</div>';
+
+        }
+      }
+
+
+      $this->disconnect($pdo);
   }
 
   public function addAide($cat, $level, $comm) {
