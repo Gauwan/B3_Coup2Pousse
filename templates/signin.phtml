@@ -14,7 +14,7 @@
         <h2 class="form-signin-heading">Se connecter</h2>
 </br>
         <input type="email" id="email" name="email" class="form-control sign" placeholder="Adresse mail" required autofocus>
-
+</br>
         <input type="password" id="password" name="password" class="form-control sign" placeholder="Mot de passe" required>
 
         <input type="hidden" name="url" value="<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>">
@@ -24,13 +24,13 @@
                 <input type="checkbox" value="remember-me"> Se souvenir de moi
             </label>
         </div>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+</br>
+        <button class="btn btn-lg btn-default btn-block" type="submit">Connexion</button>
 
     </form>
 
     </br>
-    <p class="text-center singupbtn"><a href="/signup/" class="btn btn-success already">Je n'ai pas de compte?</a></p>
+    <p class="text-center singupbtn"><a href="/signup/" class="btn btn-default already">Je n'ai pas de compte?</a></p>
 
 
 </div> <!-- .container -->

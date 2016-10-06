@@ -45,3 +45,24 @@ body {
 button:hover{
     text-decoration: none;
 }
+footer{
+    position: absolute; bottom: 0; left: 0; right: 0
+}
+.btn-default{
+    background-color: #FE5000!important;
+    border-color: #FE5000!important;
+    background-image: linear-gradient(to bottom,#FF9B70 0,#FE5000 100%);
+    text-shadow: 0 1px 0 #FF9B70;
+    color: white;
+}
+.btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default:visited, .btn-default:link{
+    background-position: 0 50px;
+    background-color: rgb(254,80,0,0.5);
+    color: white!important;
+}
+.logobarre{
+    background-image: url(../image/logo.png);
+    background-repeat:no-repeat;
+    background-size: 47px 47px;
+    padding-left: 50px;
+}
