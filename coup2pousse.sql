@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `adresses`
 --
 
-CREATE TABLE `adresses` (
+CREATE TABLE `Adresses` (
   `ID_Adresse` int(11) NOT NULL,
   `Number_Adresse` int(11) DEFAULT NULL,
   `Name_Adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `adresses` (
 -- Structure de la table `aides`
 --
 
-CREATE TABLE `aides` (
+CREATE TABLE `Aides` (
   `ID_Aide` int(11) NOT NULL,
   `Category_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Level_Aide` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE `aides` (
 -- Structure de la table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `Users` (
   `ID_User` int(11) NOT NULL,
   `Login_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Password_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`ID_User`, `Login_User`, `Password_User`, `Fullname_User`, `Phonenumber_User`, `Skype_User`, `Email_User`, `Disponibility_User`, `IsEtablissement_User`, `ID_Adresse`) VALUES
+INSERT INTO `Users` (`ID_User`, `Login_User`, `Password_User`, `Fullname_User`, `Phonenumber_User`, `Skype_User`, `Email_User`, `Disponibility_User`, `IsEtablissement_User`, `ID_Adresse`) VALUES
 (1, 'Stumat', 'mat260996', 'Mathieu Nicaudie', NULL, NULL, 'mathieunicaudie@gmail.com', NULL, 0, NULL);
 
 --
@@ -84,13 +84,13 @@ INSERT INTO `users` (`ID_User`, `Login_User`, `Password_User`, `Fullname_User`, 
 --
 -- Index pour la table `adresses`
 --
-ALTER TABLE `adresses`
+ALTER TABLE `Adresses`
   ADD PRIMARY KEY (`ID_Adresse`);
 
 --
 -- Index pour la table `aides`
 --
-ALTER TABLE `aides`
+ALTER TABLE `Aides`
   ADD PRIMARY KEY (`ID_Aide`),
   ADD UNIQUE KEY `ID_Responsable` (`ID_Pousse_User`),
   ADD UNIQUE KEY `ID_Pousseur_User` (`ID_Pousseur_User`);
@@ -98,7 +98,7 @@ ALTER TABLE `aides`
 --
 -- Index pour la table `users`
 --
-ALTER TABLE `users`
+ALTER TABLE `Users`
   ADD PRIMARY KEY (`ID_User`),
   ADD UNIQUE KEY `Login_User` (`Login_User`),
   ADD UNIQUE KEY `ID_Adresse` (`ID_Adresse`);
@@ -110,7 +110,7 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT pour la table `users`
 --
-ALTER TABLE `users`
+ALTER TABLE `Users`
   MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
