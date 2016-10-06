@@ -53,16 +53,17 @@ footer{
     border-color: #FE5000!important;
     background-image: linear-gradient(to bottom,#FF9B70 0,#FE5000 100%);
     text-shadow: 0 1px 0 #FF9B70;
-    color: white;
+    color: ##818080;
 }
 .btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default:visited, .btn-default:link{
     background-position: 0 50px;
     background-color: rgb(254,80,0,0.5);
-    color: white!important;
+    color: ##818080!important;
 }
 .logobarre{
     background-image: url(../image/logo.png);
     background-repeat:no-repeat;
-    background-size: 47px 47px;
+    background-size: 46px 46px;
     padding-left: 50px;
+    background-position: 0 2px;
 }
