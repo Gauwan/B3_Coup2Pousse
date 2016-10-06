@@ -4,7 +4,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 06 Octobre 2016 à 11:21
+-- Généré le: Jeu 06 Octobre 2016 à 12:45
 -- Version du serveur: 10.0.20-MariaDB
 -- Version de PHP: 5.2.17
 
@@ -49,28 +49,11 @@ CREATE TABLE IF NOT EXISTS `Aides` (
   `Commentary_Aide` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Reserved_Aide` tinyint(1) NOT NULL,
   `Note_Aide` int(1) DEFAULT NULL,
-  `ID_User` int(11) NOT NULL,
-  `ID_Etablissement` int(11) NOT NULL,
+  `ID_Pousse_User` int(11) NOT NULL,
+  `ID_Pousseur_User` int(11) NOT NULL,
   PRIMARY KEY (`ID_Aide`),
-  UNIQUE KEY `ID_Responsable` (`ID_User`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Etablissements`
---
-
-CREATE TABLE IF NOT EXISTS `Etablissements` (
-  `ID_Etablissement` int(11) NOT NULL,
-  `Login_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Password_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Name_Etablissement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Phonenumber_Etablissement` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Email_Etablissement` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ID_Adresse` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID_Etablissement`),
-  UNIQUE KEY `ID_Adresse` (`ID_Adresse`)
+  UNIQUE KEY `ID_Responsable` (`ID_Pousse_User`),
+  UNIQUE KEY `ID_Pousseur_User` (`ID_Pousseur_User`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -83,12 +66,12 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `ID_User` int(11) NOT NULL AUTO_INCREMENT,
   `Login_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Password_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Firstname_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Lastname_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Fullname_User` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Phonenumber_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Skype_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Disponibility_User` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IsEtablissement_User` tinyint(1) NOT NULL,
   `ID_Adresse` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_User`),
   UNIQUE KEY `ID_Adresse` (`ID_Adresse`)
