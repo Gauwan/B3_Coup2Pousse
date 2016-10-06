@@ -1,12 +1,27 @@
 <div class="container">
 	</br>
-	<form action="rechercher.phtml">
+	<form action="#">
 		<div class="form-group divrecherche">
-	  		<input type="text" class="form-control" id="barrederecherche" placeholder="Rechercher un pousseur"><button class="glyphicon glyphicon-search" id="boutonrechercher" type="submit"></button>
+	  		<input type="text" class="form-control" id="barrederecherche" placeholder="Rechercher un pousseur"><button class="glyphicon search2 glyphicon-search" id="boutonrechercher" type="submit"></button>
 		</div>
 	</form>
 
     Liste des pousseurs.
+	
+	<?php 
+	
+		$db = new dbUsers(); 
+		$aides = $db->getAides();
+		foreach ($aides as $aide) {
+			
+			echo '
+				<tr>
+					<td>'.$aide.'</td>
+				</tr>';
+			
+		}
+		
+	?>
 
     <?php if (isset($name)) : ?>
         <h2>Hello <?= htmlspecialchars($name); ?>!</h2>

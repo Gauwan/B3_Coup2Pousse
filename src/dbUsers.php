@@ -95,5 +95,16 @@ class dbUsers extends database {
         return $result["Login_User"];
 
     }
+	
+	public function getAides() {
+		
+		$pdo = $this->connect();
+		$requete = "SELECT ID_Aide, Category_Aide, Level_Aide, Commentary_Aide
+					FROM Aides";
+		$stmt = $pdo->query($requete);
+		$result = $stmt->fetch();
+		return $result;
+		
+	}
 
 }

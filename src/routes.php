@@ -27,7 +27,7 @@ $app->get('/search/', function ($request, $response, $args) {
     $this->logger->info("Slim-Skeleton '/' route");
 
     // Render search view
-    return $this->renderer->render($response, 'search.phtml', $args);
+    return $this->renderer->render($response, '/search.phtml', $args);
 })->add($pattern);
 
 
