@@ -11,7 +11,7 @@ class dbUsers extends database {
     /*-----  Zone Public  -----*/
     /*-------------------------*/
 
-    public function registrationUser($login, $email, $password, $firstname, $lastname, $birthday)
+    public function registrationUser($email, $login, $password, $firstname, $lastname, $birthday)
     {
         $pdo = $this->connect();
 

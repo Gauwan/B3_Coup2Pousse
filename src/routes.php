@@ -3,10 +3,8 @@
 
 $app->get('/', function ($request, $response, $args) {
     // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+    return $response->withRedirect('/signin/');
 })->add($pattern);
 
 $app->get('/404/', function ($request, $response, $args) {
@@ -15,6 +13,14 @@ $app->get('/404/', function ($request, $response, $args) {
 
     // Render index view
     return $this->renderer->render($response, '404.phtml', $args);
+})->add($pattern);
+
+$app->get('/search/', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("Slim-Skeleton '/' route");
+
+    // Render index view
+    return $this->renderer->render($response, 'index.phtml', $args);
 })->add($pattern);
 
 
@@ -39,10 +45,10 @@ $app->get('/signup/{error}', function ($request, $response, $args) {
 $app->post('/signup/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->registrationUser($_POST["login"],$_POST["email"],$_POST["password"], $_POST["firstname"], $_POST["lastname"],$_POST["birthday"]))
+    if ( $db->registrationUser($request->getParsedBody()['email'],$request->getParsedBody()['login'],$request->getParsedBody()['password'], $request->getParsedBody()['firstname'], $request->getParsedBody()['lastname'], $request->getParsedBody()['birthday']))
         return $response->withRedirect('/');
     else
-        return $response->withRedirect('/signout/error');
+        return $response->withRedirect('/signup/error');
 });
 
 
@@ -63,7 +69,7 @@ $app->get('/signin/{error}', function ($request, $response, $args) {
 $app->post('/signin/process/', function ($request, $response, $args) {
 
     $db = new dbUsers();
-    if ( $db->connectionUser($_POST["email"],$_POST["password"]))
+    if ( $db->connectionUser($request->getParsedBody()['email'], $request->getParsedBody()['password']))
         return $response->withRedirect('/');
     else
         return $response->withRedirect('/signin/error');
