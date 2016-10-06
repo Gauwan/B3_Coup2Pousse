@@ -15,8 +15,7 @@ body {
 #barrederecherche{
     text-align: center;
     font-size: 25px;
-    float: middle;
-    width: 28em;
+
 }
 #contentpage{
     overflow-y: scroll!important;
@@ -24,10 +23,10 @@ body {
     z-index: 9999;
 }
 #boutonrechercher{
-    margin: auto;
-    float: right;
+    margin-left: 100%;
+
     top: -34.5px;
-    width: 35px;
+
     height: 34.5px;
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
@@ -36,16 +35,17 @@ body {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#monprofil{
-    height: 150px;
-    width: 150px;
-    border: 1px solid #000000;
-    position: absolute;
-}
 .form-group{
     display: inline-block;
-}.sign{
-
+}
+@media screen and (max-width: 240px) {
+    .divrecherche{
+    width: 80%;
+    margin-top: 50px;
+}
+    }
+.divrecherche{
+    width: 50%;
 }
 .formsign{
     margin: auto;
