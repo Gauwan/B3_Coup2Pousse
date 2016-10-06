@@ -71,3 +71,14 @@ footer{
 }
 .navbar-default {
     background-image: -webkit-linear-gradient(top,#FEFBFA 0,#FEF3F0 100%);
+}
+.glyphicon-search{
+    background-color: #FE5000;
+    color: white;
+}
+input, button {
+    border-color: #FED3C2!important;
+}
+input:focus, button:focus {
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #FEE2D7!important;;
+}
