@@ -16,7 +16,7 @@ class dbUsers extends database {
         $pdo = $this->connect();
 
         //Préparation de la requete
-        $requete = "INSERT INTO users (Login_User, Password_User, Fullname_User, Email_User, IsEtablissement_User) VALUES (:login, :password, :fullname, :email, :establishment)";
+        $requete = "INSERT INTO Users (Login_User, Password_User, Fullname_User, Email_User, IsEtablissement_User) VALUES (:login, :password, :fullname, :email, :establishment)";
 
         $stmt = $pdo->prepare($requete);
         $stmt->bindParam(':login', $login);
