@@ -1,0 +1,39 @@
+<div class="container">
+
+
+    <?php if (isset($error)) {
+
+            echo '<div class="alert alert-danger" role="alert"> Il y a une erreur, réessayer ou contacter un administrateur !</div>';
+
+    } ?>
+
+
+
+    <form method="post" class="formsign" action="/profile/process/" class="form-profile">
+
+        <h2 class="form-profile-heading">Aide</h2>
+
+</br>
+        <label>Catégorie :</label>
+        <input type="text" id="category" name="category" class="form-control" placeholder="Catégorie" required>
+</br>
+        <label>Niveau :</label>
+        <input type="text" id="level" name="level" class="form-control" placeholder="Niveau" required>
+</br>
+        <label>Commentaire :</label>
+        <input type="text" id="commentary" name="commentary" class="form-control" placeholder="Commentaire">
+</br>
+        </br>
+
+        <button class="btn btn-lg btn-default btn-block" type="submit" id="submit">Enregistrer</button>
+
+    </form>
+
+
+
+<!--
+    <p class="text-center"><a href="/signin/" class="btn btn-success already">Vous avez déja un compte?</a></p>
+-->
+
+
+</div> <!-- .container -->

@@ -118,3 +118,11 @@ $app->post('/profile/process/', function ($request, $response, $args) {
         return $response->withRedirect('/signin/error');
 });
 
+// Aide
+$app->post('/aide/add/', function ($request, $response, $args) {
+	
+	$db = new dbUsers();
+	if ( $db->addAide($request->getParsedBody()['category'], $request->getParsedBody()['level'], $request->getParsedBody()['commentary']) )
+		return $reponse->withRedirect('/search/');
+	
+});

@@ -16,7 +16,8 @@ class dbUsers extends database {
         $pdo = $this->connect();
 
         //Préparation de la requete
-        $requete = "INSERT INTO users (Login_User, Password_User, Fullname_User, Email_User) VALUES (:login, :password, :fullname, :email)";
+        $requete = "INSERT INTO users (Login_User, Password_User, Fullname_User, Email_User) 
+					VALUES (:login, :password, :fullname, :email)";
 
         $stmt = $pdo->prepare($requete);
         $stmt->bindParam(':login', $login);
@@ -43,7 +44,10 @@ class dbUsers extends database {
         $found = false;
 
         //Recheche des utilisateurs
-        $requeteP = "SELECT ID_User, Password_User FROM Users WHERE Login_User = '".$login."'";
+        $requeteP = "
+			SELECT ID_User, Password_User 
+			FROM users 
+			WHERE Login_User = '".$login."'";
         $stmt = $pdo->prepare($requeteP);
         if ($stmt->execute())
         {
@@ -81,11 +85,29 @@ class dbUsers extends database {
 		
 		$pdo = $this->connect();
 		$requete = "SELECT ID_Aide, Category_Aide, Level_Aide, Commentary_Aide
-					FROM Aides";
+					FROM aides";
 		$stmt = $pdo->query($requete);
 		$result = $stmt->fetch();
 		return $result;
 		
 	}
 
+	public function addAide($category, $level, $commentary) {
+		
+		$pdo = $this->connect();
+		$idUser = $_SESSION["C2P_ID"];
+		$requete = "INSERT INTO aides (Category_Aide, Level_Aide, Commentary_Aide, ID_Pousse_User)
+					VALUES (:category, :level, :commentary, :id)";
+		$stmt = $pdo->prepare($requete);
+		$stmt->bindParam(':category', $category);
+		$stmt->bindParam(':level', $level);
+		$stmt->bindParam(':commentary', $commentary);
+		$stmt->bindParam(':id', $idUser);
+		if ($stmt->execute())
+			return true;
+		else
+			return false;
+		
+	}
+	
 }
