@@ -68,6 +68,7 @@ footer{
     text-shadow: 0 1px 0 #FF9B70;
     color: white;
 }
+
 .btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default:visited, .btn-default:link{
     background-position: 0 50px;
     background-color: rgb(254,80,0,0.5);
@@ -84,7 +85,9 @@ footer{
 .navbar-default {
     background-image: -webkit-linear-gradient(top,#FEFBFA 0,#FEF3F0 100%);
 }
-.glyphicon-search{
+
+.search2{
+    content: "\e003";
     background-color: #FE5000;
     color: white;
 }
